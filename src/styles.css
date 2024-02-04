@@ -1,0 +1,416 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #28282b;
+}
+
+.container {
+  background-color: #141414;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+}
+
+.file-select-button:hover {
+  background-color: #0056b3;
+}
+
+.file-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-select-button input[type="file"] {
+  display: none;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #1b4d6e;
+}
+
+td > button {
+  margin: auto;
+}
+
+.json-table-container {
+  width: 100vw;
+  overflow-x: auto;
+  position: relative;
+  display: flex;
+}
+
+.json-table {
+  border-collapse: collapse;
+  margin: 10px 0px;
+  overflow: auto;
+  display: block;
+  width: 100vw;
+  height: calc(100vh - 125px);
+}
+
+.json-table thead {
+  position: sticky;
+  top: 0;
+  background-color: #28282b;
+  z-index: 2;
+}
+
+.json-table th,
+.json-table td {
+  padding: 8px;
+  border: 1px solid #bdc3c7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background-color: #171717;
+  color: #fff;
+}
+
+.json-table th {
+  font-weight: bold;
+  text-align: center;
+  background-color: #222222;
+}
+
+.json-table th:first-child,
+.json-table td:first-child {
+  position: sticky;
+  left: 0;
+  background-color: #222222;
+  z-index: 2;
+}
+.json-table th:last-child,
+.json-table td:last-child {
+  position: sticky;
+  right: 0;
+  background-color: #222222;
+  text-align: center;
+}
+
+.json-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.download-button-excel {
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #2ecc71;
+}
+
+.download-button-excel:hover {
+  background-color: #1b7340;
+}
+
+pre {
+  overflow: auto;
+  background-color: #28282b;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #28282b;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+.table-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.table-overlay-text {
+  font-size: 20px;
+  color: #333;
+}
+
+.json-table tr,
+.json-table th {
+  transition: background-color 0.3s ease;
+}
+
+.json-table tr.dragging {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.json-table tr.dragging td {
+  opacity: 0.6;
+}
+
+.json-table th {
+  position: relative;
+  cursor: move;
+}
+
+.delete-column-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #999;
+  padding: 2px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  right: 20px;
+  font-size: 20px;
+}
+
+.json-table th:hover .delete-column-button {
+  opacity: 1;
+  background-color: transparent;
+}
+
+@keyframes rowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.json-table tbody tr {
+  animation: rowFadeIn 0.4s ease;
+}
+.json-table tbody {
+  z-index: 1;
+  position: relative;
+}
+
+.table-actions {
+  margin-top: 20px;
+  display: flex;
+  width: 150px;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+.table-actions button {
+  margin: 0px 10px;
+  width: 140px;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.Edit-input {
+  line-height: 33px;
+  background: #3b3b3b;
+  color: #fff;
+}
+
+.top-left-corner {
+}
+
+.sheet-tabs {
+  display: flex;
+  flex-flow: row;
+  width: 100vw;
+  overflow-x: scroll;
+  text-wrap: nowrap;
+}
+
+.filter-container {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-container input {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.filter-container button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.add-sheet {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin: 8px;
+  background-color: #bdc3c7;
+  margin: 0px 10px 10px 10px;
+}
+
+.sheet-tab {
+  display: flex;
+  align-items: center;
+  padding: 5px 0px 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #28282b;
+  margin: 0px 10px 10px 10px;
+}
+
+.sheet-tab.active {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.sheet-tab button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin-right: 8px;
+  padding: 4px;
+  font-size: 16px;
+}
+
+.sheet-tab button.edit {
+  color: #ffffff;
+}
+
+.sheet-tab button.delete {
+  color: #e74c3c;
+}
+
+.download-selectFile {
+  display: flex;
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .download-selectFile {
+    justify-content: center;
+  }
+
+  .Edit-input {
+    width: 70px;
+  }
+
+  .large-screen {
+    display: none;
+  }
+}
+
+.download-selectFile > button {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.file-select-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 4px;
+  margin: 0px 10px;
+  border: none;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.file-select-button input {
+  display: none;
+}
+
+.file-icon {
+  display: flex;
+}
+
+.file-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: none;
+}
+
+.text {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .text {
+    display: inline;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .file-icon {
+    display: none;
+  }
+
+  .file-text {
+    display: flex;
+  }
+  .mobile-screen {
+    display: none;
+  }
+}
+
+.empty-sheet {
+  background-color: #e74c3c;
+}
+
+button > .icon {
+  display: flex;
+}
