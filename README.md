@@ -11,6 +11,10 @@ A web-based Excel sheet manager built using React. This application allows users
 - **Drag and Drop**: Reorder rows and columns using drag and drop functionality.
 - **Responsive Design**: Responsive UI for both large screens and mobile devices.
 
+## Live Demo
+
+Check out the live demo [here](https://excel-sheet-manager.netlify.app/).
+
 ## Getting Started
 
 Follow these steps to get the project up and running on your local machine:
